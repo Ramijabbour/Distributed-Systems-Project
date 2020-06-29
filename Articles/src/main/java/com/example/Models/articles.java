@@ -3,10 +3,11 @@ package com.example.Models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name="Articles")
-public class articles {
+public class articles  {
 
 	@Id
 	int id ;
