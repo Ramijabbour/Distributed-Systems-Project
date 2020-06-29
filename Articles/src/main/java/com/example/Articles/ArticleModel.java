@@ -1,4 +1,4 @@
-package com.example.Models;
+package com.example.Articles;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="Articles")
-public class articles  {
+public class ArticleModel  {
 
 	@Id
 	int id ;
@@ -15,15 +15,25 @@ public class articles  {
 	String text ;
 	
 	
-	public articles() {
+	public ArticleModel() {
 		
 	}
 	
-	public articles(String subject, String text) {
+	public ArticleModel(String subject, String text) {
 		super();
 		this.subject = subject;
 		this.text = text;
 	}
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getSubject() {
 		return subject;
 	}
