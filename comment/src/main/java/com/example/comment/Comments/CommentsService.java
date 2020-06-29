@@ -36,5 +36,14 @@ public class CommentsService {
 		return commentList; 
 	}
 	
+	public void injectData() {
+		for(int i = 0 ; i < 10 ; i++) {
+			for(int j = 0 ; j < 10 ; j++) {
+				CommentModel cm = new CommentModel("content "+j, i);
+				this.commentsRepostory.save(cm);
+			}
+		}
+	}
+	
 	
 }
