@@ -1,5 +1,6 @@
 package com.example.Articles;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,10 +87,16 @@ public class ArticleController {
 		mav.addObject("articles", allArticle);
 		return mav;
 	}
-	
-	
-	
-	
-	
-	
+
+//////////////////test
+@RequestMapping("/test")
+public ArticleModel index() {
+		ArticleModel articleModel = new ArticleModel();
+		articleModel.setSubject("ooooooo");
+		articleModel.setText("dksjfksdhfkjdshf");
+	return articleModel ;
+}
+
+
+
 }
