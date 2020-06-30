@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 
 @SpringBootApplication
 @EnableEurekaClient
 public class ArticlesApplication {
+	
+	
 	private static OrderMessageSender orderMessageSender;
 
 
@@ -19,13 +23,19 @@ public class ArticlesApplication {
 	public ArticlesApplication(OrderMessageSender orderMessageSender) {
 		this.orderMessageSender = orderMessageSender;
 	}
+	
+	@Bean
+	public RestTemplate GetRestTemplate()
+	{
+		return new RestTemplate();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ArticlesApplication.class, args);
 		ArticleID articleID=new ArticleID();
 		articleID.id=0;
-		orderMessageSender.sendOrderToComment(articleID);
-		orderMessageSender.sendOrderToRating(articleID);
+		//orderMessageSender.sendOrderToComment(articleID);
+		//orderMessageSender.sendOrderToRating(articleID);
 	}
 
 }

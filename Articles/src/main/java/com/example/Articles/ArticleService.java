@@ -12,6 +12,7 @@ public class ArticleService {
 	@Autowired 
 	ArticleRepository articleRepo ; 
 	
+	
 	public void addArticle (ArticleModel a)
 	{
 		 this.articleRepo.save(a);

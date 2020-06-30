@@ -24,8 +24,10 @@ public class CommentsController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET , value = "/getComments/{articleId}")
-	public List<CommentModel> getArticleComments(@PathVariable int articleId){
-		return this.commentsService.getArticleComments(articleId);
+	public ArticleComment getArticleComments(@PathVariable int articleId){
+		ArticleComment articleComment = new ArticleComment();
+		articleComment.setAllCommentForThisArticle(this.commentsService.getArticleComments(articleId));
+		return articleComment;
 	}
 	
 	@GetMapping("/inject")
