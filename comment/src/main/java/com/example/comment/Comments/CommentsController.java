@@ -1,7 +1,5 @@
 package com.example.comment.Comments;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,10 +28,15 @@ public class CommentsController {
 		return articleComment;
 	}
 	
-	@GetMapping("/inject")
+	@RequestMapping("/inject")
 	public ResponseEntity<HttpStatus> injectData() {
 		this.commentsService.injectData();
 		return ResponseEntity.ok(HttpStatus.OK);
+	}
+	
+	@RequestMapping("/test")
+	public CommentModel getData() {
+		return new CommentModel("test ya basha",1);
 	}
 	
 }
