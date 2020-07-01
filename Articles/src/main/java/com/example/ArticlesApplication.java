@@ -34,8 +34,8 @@ public class ArticlesApplication {
 		SpringApplication.run(ArticlesApplication.class, args);
 		ArticleID articleID=new ArticleID();
 		articleID.id=0;
-		//orderMessageSender.sendOrderToComment(articleID);
-		//orderMessageSender.sendOrderToRating(articleID);
+		orderMessageSender.sendOrderToComment(articleID);
+		orderMessageSender.sendOrderToRating(articleID);
 	}
 
 }
