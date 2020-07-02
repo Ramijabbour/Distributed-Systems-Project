@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderMessageSender {
-/*    private final RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
     private final ObjectMapper objectMapper;
 
     @Autowired
@@ -25,5 +25,5 @@ public class OrderMessageSender {
     public void sendOrderToRating(ArticleID id) {
 
         this.rabbitTemplate.convertAndSend("ArticleIdToRating",id);
-    }*/
+    }
 }

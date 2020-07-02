@@ -1,0 +1,25 @@
+spring:
+   application:
+      name: Articles-Service
+   rabbitmq:
+     host: localhost
+     port: 5672
+     username: guest
+     password: guest
+     
+server:
+  port: ${PORT:9999}
+  
+  
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka
+    instance:
+        metadataMap:
+            zone: zone2
+
+
+  
+
+  
