@@ -2,6 +2,7 @@ package com.example.comment.Comments;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,9 @@ public class CommentsService {
 		for(CommentModel comment : commentList ) {
 			this.commentsRepostory.delete(comment);
 		}
+		
 	}
-
+	
 	public List<CommentModel> getArticleComments(int articleId ){
 		List<CommentModel> commentList = this.commentsRepostory.findByarticleId(articleId);
 		if(commentList == null ) {
@@ -33,7 +35,7 @@ public class CommentsService {
 		}
 		return commentList; 
 	}
-
+	
 	public void injectData() {
 		for(int i = 0 ; i < 10 ; i++) {
 			for(int j = 0 ; j < 10 ; j++) {
@@ -42,4 +44,6 @@ public class CommentsService {
 			}
 		}
 	}
+	
+	
 }

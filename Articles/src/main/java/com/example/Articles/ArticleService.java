@@ -1,10 +1,7 @@
 package com.example.Articles;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.example.MQ.ModelToSend.ArticleID;
-import com.example.MQ.OrderMessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +10,8 @@ import org.springframework.stereotype.Service;
 public class ArticleService {
 
 	@Autowired 
-	ArticleRepository articleRepo ;
-
-	@Autowired
-	OrderMessageSender orderMessageSender ;
-
+	ArticleRepository articleRepo ; 
+	
 	
 	public void addArticle (ArticleModel a)
 	{
@@ -46,24 +40,8 @@ public class ArticleService {
 	
 	public void deleteArticle(int id )
 	{
-		ArticleID articleID=new ArticleID();
-		articleID.id=id;
 		articleRepo.deleteById(id);
-		orderMessageSender.sendOrderToComment(articleID);
-
 	}
-
-
-	public List<ArticleModel> GetSearchResult(String name) {
-		List<ArticleModel> all = articleRepo.findAll();
-		List<ArticleModel> result = new ArrayList<ArticleModel>();
-
-		for(ArticleModel article: all )
-		{
-			if(article.getSubject().equalsIgnoreCase(name))
-				result.add(article);
-		}
-		return result;
-
-	}
+	
+	
 }
