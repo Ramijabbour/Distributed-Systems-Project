@@ -1,4 +1,4 @@
-package com.example.Model;
+package com.example.Rate.Rates;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,8 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class RatingModel {
-	
+public class RateModel {
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Rid ; 
@@ -18,12 +19,12 @@ public class RatingModel {
 
 	
 	
-	public RatingModel() {
+	public RateModel() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public RatingModel(int rateValue, int articleId) {
+	public RateModel(int rateValue, int articleId) {
 		super();
 		this.rateValue = rateValue;
 		this.articleId = articleId;

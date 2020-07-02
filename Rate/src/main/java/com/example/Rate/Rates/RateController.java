@@ -1,6 +1,4 @@
-package com.example.Controller;
-
-import java.util.List;
+package com.example.Rate.Rates;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,19 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.Model.RatingModel;
-import com.example.Service.RatingService;
 
 
 @RestController
-@RequestMapping("/Rating")
-public class RatingController {
-
+@RequestMapping("/Rate")
+public class RateController {
 	@Autowired
-	RatingService ratingService ;
+	RateService ratingService ;
 	
 	@RequestMapping(method = RequestMethod.POST ,value = "/addRate")
-	public void addRating (@ModelAttribute RatingModel ratingModel )
+	public void addRating (@ModelAttribute RateModel ratingModel )
 	{
 		this.ratingService.addRate(ratingModel.getRateValue(), ratingModel.getArticleId());
 	}
@@ -30,7 +25,8 @@ public class RatingController {
 	public float getRatingToArticle(@PathVariable int articleId)
 	{
 		 return this.ratingService.avgRateForArticle(articleId);
-	}
+	} 
 	
 	
+
 }

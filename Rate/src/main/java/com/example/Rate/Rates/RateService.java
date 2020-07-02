@@ -1,57 +1,64 @@
-package com.example.Service;
+package com.example.Rate.Rates;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Model.RatingModel;
-import com.example.Repository.RatingRepository;
-
 
 @Service
-public class RatingService {
+public class RateService {
+
 
 	@Autowired
-	RatingRepository ratingRepository ;
+	RateRepository ratingRepository ;
 	
 	public void addRate(int rateValue , int articleId)
 	{
-		RatingModel ratingmodle = new RatingModel(rateValue , articleId);
+		RateModel ratingmodle = new RateModel(rateValue , articleId);
 		this.ratingRepository.save(ratingmodle);
 	}
 	
 	public void deleteArticleRating(int articleId)
 	{
 		
-		List<RatingModel> RatingList = this.ratingRepository.findByarticleId(articleId);
+		List<RateModel> RatingList = this.ratingRepository.findByarticleId(articleId);
 		if(RatingList == null)
 		{
 			return ; 
 		}
-		for(RatingModel rate : RatingList)
+		for(RateModel rate : RatingList)
 		{
 			this.ratingRepository.delete(rate);
 		}
 	}
 	
 	
+	public void injectData() {
+		for(int i = 0 ; i < 10 ; i++) {
+			for(int j = 0 ; j < 10 ; j++) {
+				RateModel rm = new RateModel(j, i);
+				this.ratingRepository.save(rm);
+			}
+		}
+	}
+	
+	
+	
 	public float avgRateForArticle(int articleId)
 	{
-		List<RatingModel> RatingList = this.ratingRepository.findByarticleId(articleId);
+		List<RateModel> RatingList = this.ratingRepository.findByarticleId(articleId);
 		if(RatingList == null)
 		{
 			return 0 ; 
 		}
 		int sum = 0; 
-		for(RatingModel rate : RatingList)
+		for(RateModel rate : RatingList)
 		{
 			sum += rate.getRateValue(); 
 		}
 		return sum/RatingList.size();
 	}
-	
-	
 	
 	
 }
