@@ -1,0 +1,22 @@
+spring:
+   application:
+      name: Rating-Service
+   rabbitmq:
+     host: localhost
+     port: 5672
+     username: guest
+     password: guest
+     
+server:
+  port: ${PORT:8083}
+  
+  
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka
+
+
+  
+
+  
