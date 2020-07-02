@@ -1,10 +1,10 @@
-package com.example.Rate;
+package com.example.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RateApplicationTests {
+class RatingApplicationTests {
 
 	@Test
 	void contextLoads() {
