@@ -1,0 +1,30 @@
+spring:
+   application:
+      name: Zull-Gatway
+
+server:
+  port: ${PORT:8085}
+      
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka
+        registerWithEureka: false
+        preferSameZoneEureka: true
+    instance:
+        metadataMap:
+            zone: zone1
+    
+        
+zuul:
+   prefix: /api
+   routes:
+      Articles-Service:
+        path: /Articles/**
+        serviceId: Articles-Service
+      Comments-Service:
+        path: /Comments/**
+        serviceId: Comments-Service
+ribbon: 
+   eureka:
+      enabled: true

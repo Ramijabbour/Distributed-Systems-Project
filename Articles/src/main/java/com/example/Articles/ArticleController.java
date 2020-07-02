@@ -1,21 +1,18 @@
 package com.example.Articles;
 
-import java.util.Date;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.example.ExternalModel.ArticleComment;
 import com.example.ExternalModel.CommentModel;
-import com.example.ExternalModel.RatingModel;
 
 
 
@@ -28,9 +25,10 @@ public class ArticleController {
 	ArticleService articleService;
 	
 	@Autowired
+
 	public RestTemplate restTemplate ;
 	
-	
+	/*
 	@RequestMapping(method = RequestMethod.GET , value = "/addArticle")
 	public ModelAndView ShowaddArticle()
 	{
@@ -38,34 +36,33 @@ public class ArticleController {
 		mav.addObject("article", new ArticleModel());
 		return mav;
 	}
-	
+	*/
+
 	@RequestMapping(method = RequestMethod.POST , value = "/addArticle")
 	public void addArticle(@ModelAttribute ArticleModel article)
 	{
-		 articleService.addArticle(article);
+		articleService.addArticle(article);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET , value = "/Show/{id}")
-	public ModelAndView ShowArticle(@PathVariable int id)
+	public ArticleCommentRating ShowArticle(@PathVariable int id)
 	{
-		ModelAndView mav = new ModelAndView();
 		ArticleModel article = this.articleService.getArticlesByID(id);
-		
+
 		//get all comment for this article 
-		ArticleComment AllComments =restTemplate.getForObject("http://localhost:8089/Comments/getComments/"+article.id, ArticleComment.class);
+		ArticleComment AllComments =restTemplate.getForObject("http://Comments-Service/Comments/getComments/"+article.id, ArticleComment.class);
 		List<CommentModel> ArticleComment = AllComments.getAllCommentForThisArticle();
 		
 		//get rate for this article
 		
 		
-		float Rating =restTemplate.getForObject("http://localhost:8083/getRate/"+article.id, Float.class);
-		mav.addObject("article", article);
-		mav.addObject("ArticleComment", ArticleComment);
-		mav.addObject("rating", Rating);
+		float Rating =restTemplate.getForObject("http://Rating-Service/RatingS/getRate/"+article.id, Float.class);
 
-		
-		return mav;
-		
+		ArticleCommentRating AllInformation = new ArticleCommentRating();
+		AllInformation.setArticle(article);
+		AllInformation.setComment(ArticleComment);
+		AllInformation.setRating(Rating);
+		return AllInformation;
 	}
 	
 	
@@ -80,22 +77,31 @@ public class ArticleController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET , value = "/all")
-	public ModelAndView allArticle()
+	public List<ArticleModel> allArticle()
 	{
-		ModelAndView mav = new ModelAndView();
 		List <ArticleModel> allArticle = this.articleService.GetAllArticles();
-		mav.addObject("articles", allArticle);
-		return mav;
+		return allArticle;
 	}
 
-//////////////////test
-@RequestMapping("/test")
-public ArticleModel index() {
-		ArticleModel articleModel = new ArticleModel();
-		articleModel.setSubject("ooooooo");
-		articleModel.setText("dksjfksdhfkjdshf");
-	return articleModel ;
-}
+	@RequestMapping(method = RequestMethod.GET , value = "/ArticleSearch/{subject}")
+	public ArticleList Search(@PathVariable String subject)
+	{
+		List <ArticleModel> allArticle = this.articleService.GetSearchResult(subject);
+		ArticleList articleList= new ArticleList();
+		articleList.setArticle(allArticle);
+		return articleList;
+	}
+
+	@RequestMapping(method = RequestMethod.GET , value = "/Articles/test")
+	public ArticleModel test()
+	{
+
+		ArticleModel a = new ArticleModel();
+		a.setSubject("test");
+		a.setText("sdghdgsdfdg");
+		return  a;
+
+	}
 
 
 
