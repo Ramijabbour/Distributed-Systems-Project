@@ -24,10 +24,12 @@ public class ArticleController {
 
 
 	@RequestMapping(method = RequestMethod.GET , value = "/all")
-	public List<ArticleModel> allArticle()
+	public ArticleList allArticle()
 	{
 		List <ArticleModel> allArticle = this.articleService.GetAllArticles();
-		return allArticle;
+		ArticleList articleList = new ArticleList();
+		articleList.setArticle(allArticle);
+		return articleList;
 	}
 
 	@RequestMapping(method = RequestMethod.POST , value = "/addArticle")

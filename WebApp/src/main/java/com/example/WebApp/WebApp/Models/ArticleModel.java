@@ -3,6 +3,7 @@ package com.example.WebApp.WebApp.Models;
 public class ArticleModel {
 	int id ;
 	String subject ; 
+	String brief;
 	String text ;
 	
 	
@@ -10,9 +11,10 @@ public class ArticleModel {
 		
 	}
 	
-	public ArticleModel(String subject, String text) {
+	public ArticleModel(String subject,String brief, String text) {
 		super();
 		this.subject = subject;
+		this.brief=brief;
 		this.text = text;
 	}
 	
@@ -36,5 +38,13 @@ public class ArticleModel {
 	}
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	public String getBrief() {
+		return brief;
+	}
+
+	public void setBrief(String brief) {
+		this.brief = brief;
 	} 
 }
