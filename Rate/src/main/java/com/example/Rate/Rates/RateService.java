@@ -15,15 +15,15 @@ public class RateService {
 	
 	public void addRate(int rateValue , int articleId)
 	{
-		RateModel ratingmodle = new RateModel(rateValue , articleId);
-		this.ratingRepository.save(ratingmodle);
+		RateModel ratingModle = new RateModel(rateValue , articleId);
+		this.ratingRepository.save(ratingModle);
 	}
 	
 	public void deleteArticleRating(int articleId)
 	{
 		
 		List<RateModel> RatingList = this.ratingRepository.findByarticleId(articleId);
-		if(RatingList == null)
+		if(RatingList.size() == 0)
 		{
 			return ; 
 		}
@@ -48,7 +48,7 @@ public class RateService {
 	public float avgRateForArticle(int articleId)
 	{
 		List<RateModel> RatingList = this.ratingRepository.findByarticleId(articleId);
-		if(RatingList == null)
+		if(RatingList.size() == 0)
 		{
 			return 0 ; 
 		}

@@ -48,15 +48,18 @@ public class ArticleController {
 	public ArticleCommentRating ShowArticle(@PathVariable int id)
 	{
 		ArticleModel article = this.articleService.getArticlesByID(id);
-
+		if(article == null )
+			return null ; 
+		
 		//get all comment for this article 
 		ArticleComment AllComments =restTemplate.getForObject("http://Comments-Service/Comments/getComments/"+article.id, ArticleComment.class);
 		List<CommentModel> ArticleComment = AllComments.getAllCommentForThisArticle();
+		System.out.println("comment line passed --------------------------->");
 		
 		//get rate for this article
 		
 		
-		float Rating =restTemplate.getForObject("http://Rating-Service/RatingS/getRate/"+article.id, Float.class);
+		float Rating =restTemplate.getForObject("http://Rating-Service/Rate/getRate/"+article.id, Float.class);
 
 		ArticleCommentRating AllInformation = new ArticleCommentRating();
 		AllInformation.setArticle(article);
@@ -92,7 +95,7 @@ public class ArticleController {
 		return articleList;
 	}
 
-	@RequestMapping(method = RequestMethod.GET , value = "/Articles/test")
+	@RequestMapping(method = RequestMethod.GET , value = "/test")
 	public ArticleModel test()
 	{
 

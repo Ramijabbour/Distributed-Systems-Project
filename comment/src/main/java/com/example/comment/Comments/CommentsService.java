@@ -18,7 +18,7 @@ public class CommentsService {
 	
 	public void deleteArticleComments(int articleId ) {
 		List<CommentModel> commentList = this.commentsRepostory.findByarticleId(articleId);
-		if(commentList == null ) {
+		if(commentList.size() == 0 ) {
 			return ; 
 		}
 		for(CommentModel comment : commentList ) {
@@ -28,7 +28,7 @@ public class CommentsService {
 
 	public List<CommentModel> getArticleComments(int articleId ){
 		List<CommentModel> commentList = this.commentsRepostory.findByarticleId(articleId);
-		if(commentList == null ) {
+		if(commentList.size() == 0 ) {
 			return new ArrayList<CommentModel>(); 
 		}
 		return commentList; 

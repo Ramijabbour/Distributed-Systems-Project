@@ -21,10 +21,16 @@ public class RateController {
 		this.ratingService.addRate(ratingModel.getRateValue(), ratingModel.getArticleId());
 	}
 	
-	@RequestMapping(method = RequestMethod.GET , value = "/getRate/{atricleId}")
+	@RequestMapping(method = RequestMethod.GET , value = "/getRate/{articleId}")
 	public float getRatingToArticle(@PathVariable int articleId)
 	{
 		 return this.ratingService.avgRateForArticle(articleId);
+	} 
+	
+	@RequestMapping(method = RequestMethod.GET , value = "/test")
+	public String test()
+	{
+		 return "test";
 	} 
 	
 	
