@@ -1,0 +1,6 @@
+spring:
+   application:
+      name: Wiki-Application
+
+server:
+  port: ${PORT:9090}

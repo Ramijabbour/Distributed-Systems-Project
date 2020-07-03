@@ -60,7 +60,7 @@ public class ArticleController {
 		
 		
 		float Rating =restTemplate.getForObject("http://Rating-Service/Rate/getRate/"+article.id, Float.class);
-
+		
 		ArticleCommentRating AllInformation = new ArticleCommentRating();
 		AllInformation.setArticle(article);
 		AllInformation.setComment(ArticleComment);
