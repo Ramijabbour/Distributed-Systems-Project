@@ -3,8 +3,8 @@ package com.example.comment.Comments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ public class CommentsController {
 	private CommentsService commentsService ; 
 	
 	@RequestMapping(method = RequestMethod.POST , value = "/addComment")
-	public void addCommentToArticle(@ModelAttribute CommentModel comment) {
+	public void addCommentToArticle(@RequestBody CommentModel comment) {
 		this.commentsService.addComment(comment.getCommentContent(),comment.getArticleId());
 	}
 
