@@ -14,7 +14,8 @@ public class ArticleModel  {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
 	int id ;
-	String subject ; 
+	String subject ;
+	String brief;
 	String text ;
 	
 	
@@ -22,10 +23,11 @@ public class ArticleModel  {
 		
 	}
 	
-	public ArticleModel(String subject, String text) {
+	public ArticleModel(String subject, String brief,String text) {
 		super();
 		this.subject = subject;
 		this.text = text;
+		this.brief=brief;
 	}
 	
 	
@@ -48,8 +50,13 @@ public class ArticleModel  {
 	}
 	public void setText(String text) {
 		this.text = text;
-	} 
-	
-	
-	
+	}
+
+	public String getBrief() {
+		return brief;
+	}
+
+	public void setBrief(String brief) {
+		this.brief = brief;
+	}
 }
