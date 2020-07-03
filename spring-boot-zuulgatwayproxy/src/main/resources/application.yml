@@ -25,6 +25,12 @@ zuul:
       Comments-Service:
         path: /Comments/**
         serviceId: Comments-Service
+      Search-Service:
+        path: /Search/**
+        serviceId: Search-Service
+      Rating-Service:
+        path: /Rating/**
+        serviceId: Rating-Service
 ribbon: 
    eureka:
       enabled: true

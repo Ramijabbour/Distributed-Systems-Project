@@ -6,6 +6,10 @@ server:
   port: ${PORT:8761}
    
 eureka:
+  instance:
+     metadataMap:
+        zone: zone1
+  
   client:
     registerWithEureka: false
     fetchRegistry: false

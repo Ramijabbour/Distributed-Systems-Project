@@ -33,4 +33,9 @@ public class RatingController {
 	}
 	
 	
+	@RequestMapping(method = RequestMethod.GET , value ="/test")
+	public int test() {
+		return 0 ; 
+	}
+	
 }

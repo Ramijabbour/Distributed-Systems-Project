@@ -12,7 +12,7 @@ public class OrderMessageListener {
 
 
     static final Logger logger = LoggerFactory.getLogger(OrderMessageListener.class);
-
+/*
     @Autowired
     RatingService ratingService ;
     
@@ -25,6 +25,7 @@ public class OrderMessageListener {
 
         logger.info("Order Received: " + articleID);
     }
+    */
 }
 
 
