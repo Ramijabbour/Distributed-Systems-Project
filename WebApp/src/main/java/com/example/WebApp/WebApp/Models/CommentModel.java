@@ -1,5 +1,4 @@
-package com.example.ExternalModel;
-
+package com.example.WebApp.WebApp.Models;
 
 public class CommentModel {
 

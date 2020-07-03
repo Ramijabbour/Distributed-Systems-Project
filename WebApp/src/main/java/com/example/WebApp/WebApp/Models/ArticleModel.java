@@ -1,18 +1,6 @@
-package com.example.Articles;
+package com.example.WebApp.WebApp.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
-@Entity
-@Table(name="Articles")
-public class ArticleModel  {
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+public class ArticleModel {
 	int id ;
 	String subject ; 
 	String text ;
@@ -49,7 +37,4 @@ public class ArticleModel  {
 	public void setText(String text) {
 		this.text = text;
 	} 
-	
-	
-	
 }

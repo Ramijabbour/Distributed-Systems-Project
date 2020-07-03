@@ -1,6 +1,5 @@
 package com.example.Articles;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.ExternalModel.ArticleComment;
 import com.example.ExternalModel.CommentModel;
-
-
-
-
 
 @RestController
 @RequestMapping("/Articles")
@@ -54,11 +49,8 @@ public class ArticleController {
 		//get all comment for this article 
 		ArticleComment AllComments =restTemplate.getForObject("http://Comments-Service/Comments/getComments/"+article.id, ArticleComment.class);
 		List<CommentModel> ArticleComment = AllComments.getAllCommentForThisArticle();
-		System.out.println("comment line passed --------------------------->");
-
-
 		float Rating =restTemplate.getForObject("http://Rating-Service/Rate/getRate/"+article.id, Float.class);
-		
+	
 		ArticleCommentRating AllInformation = new ArticleCommentRating();
 		AllInformation.setArticle(article);
 		AllInformation.setComment(ArticleComment);
@@ -71,10 +63,7 @@ public class ArticleController {
 	public void deleteArticle(@PathVariable int id)
 	{
 		this.articleService.deleteArticle(id);
-		
-		//befor redirect to all article send id to comment and rating
-		
-		
+		//befor redirect to all article send id to comment and rating	
 	}
 	
 	@RequestMapping(method = RequestMethod.GET , value = "/all")
