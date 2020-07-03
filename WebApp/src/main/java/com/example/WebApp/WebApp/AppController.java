@@ -14,6 +14,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import com.example.WebApp.WebApp.Models.CommentModel;
+import com.example.WebApp.WebApp.Models.RateModel;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
 
 import com.example.WebApp.WebApp.Models.ArticleCommentRating;
 
@@ -35,12 +47,17 @@ public class AppController {
 
 	
 	@RequestMapping(method = RequestMethod.GET , value = "/getArticle/{articleId}")
-	public ArticleCommentRating getArticle(@PathVariable int articleId) {
-		System.out.println("invoke------------------------------>");
-		ArticleCommentRating articleModel = restTemplate.getForObject("http://localhost:8085/api/Articles/Articles/Show/"+articleId, ArticleCommentRating.class);
-		System.out.println("return ------------------------------>");
-		return articleModel ; 
+		public ModelAndView getArticle(@PathVariable int articleId) {	
+		ArticleCommentRating articleModel = restTemplate.getForObject("http://localhost:8085/api/Articles/Articles/Show/"+articleId, ArticleCommentRating.class);		
+		ModelAndView mav = new ModelAndView("viewArticle");
+		mav.addObject("article", articleModel.getArticle());
+		mav.addObject("commentsList", articleModel.getComment());
+		mav.addObject("rating", articleModel.getRating());
+		mav.addObject("comment", new CommentModel());
+		mav.addObject("rate", new RateModel());
+		return mav ; 
 	}
+	
 
 
 	@RequestMapping(method = RequestMethod.GET , value ="/all")
@@ -62,6 +79,43 @@ public class AppController {
 		mav.addObject("Allarticles",articles);
 		return mav  ;
 	}
+	
+	
+	
+
+
+@RequestMapping(method = RequestMethod.POST , value = "/addComment/{articleId}")
+public void addCommentToArticle(@PathVariable int articleId,@ModelAttribute CommentModel commentModel,HttpServletResponse response)throws IOException {
+	commentModel.setArticleId(articleId);
+	
+	String url = "http://localhost:8085/api/Comments/Comments/addComment";
+	JSONObject request = new JSONObject();
+	request.put("articleId", articleId);
+	request.put("commentContent", commentModel.getCommentContent());
+	
+	HttpHeaders headers = new HttpHeaders();
+	headers.setContentType(MediaType.APPLICATION_JSON);
+	HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
+	restTemplate
+	  .exchange(url, HttpMethod.POST, entity, String.class);
+	response.sendRedirect("/wiki/getArticle/"+articleId);
+}
+
+@RequestMapping(method = RequestMethod.POST , value = "/addRate/{articleId}")
+public void addRateToArticle(@PathVariable int articleId,@ModelAttribute RateModel rateModel ,HttpServletResponse response) throws IOException {
+	rateModel.setArticleId(articleId);
+	String url = "http://localhost:8085/api/Rating/Rate/addRate";
+	JSONObject request = new JSONObject();
+	request.put("articleId", articleId);
+	request.put("rateValue", rateModel.getRateValue());
+	
+	HttpHeaders headers = new HttpHeaders();
+	headers.setContentType(MediaType.APPLICATION_JSON);
+	HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
+	restTemplate
+	  .exchange(url, HttpMethod.POST, entity, String.class);
+	response.sendRedirect("/wiki/getArticle/"+articleId);
+}
 	
 	
 	

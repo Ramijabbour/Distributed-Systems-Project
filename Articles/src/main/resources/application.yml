@@ -16,8 +16,11 @@ eureka:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka
     instance:
-        metadataMap:
-            zone: zone3
+      prefer-ip-address: true
+      ip-address: 192.168.1.8
+      instance-id: 192.168.1.8:9999
+      metadataMap:
+            zone: zone2
   
 endpoints:
    shutdown:
