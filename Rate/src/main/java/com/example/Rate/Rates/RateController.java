@@ -1,8 +1,8 @@
 package com.example.Rate.Rates;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ public class RateController {
 	RateService ratingService ;
 	
 	@RequestMapping(method = RequestMethod.POST ,value = "/addRate")
-	public void addRating (@ModelAttribute RateModel ratingModel )
+	public void addRating (@RequestBody RateModel ratingModel )
 	{
 		this.ratingService.addRate(ratingModel.getRateValue(), ratingModel.getArticleId());
 	}
@@ -26,12 +26,5 @@ public class RateController {
 	{
 		 return this.ratingService.avgRateForArticle(articleId);
 	} 
-	
-	@RequestMapping(method = RequestMethod.GET , value = "/test")
-	public String test()
-	{
-		 return "test";
-	} 
-	
 	
 }
