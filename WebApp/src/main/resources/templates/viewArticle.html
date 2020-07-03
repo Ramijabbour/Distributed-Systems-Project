@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Electro - HTML Ecommerce Template</title>
+		<title>Wiki Distributed test</title>
 
  		<!-- Google font -->
  		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -84,7 +84,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="E:\خامسة\FILES\electro/AllArticles.html">All Articles</a></li>
 						<li><a href="E:\خامسة\FILES\electro/Categories.html">Categories</a></li>
-						<li><a href="E:\خامسة\FILES\electro/addArticle.html">Add Article</a></li>
+						<li><a href="/wiki/addArticle">Add Article</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>
@@ -105,200 +105,72 @@
 					<!-- Product details -->
 					<div class="col-md-12">
 						<div class="product-details">
-							<h2 class="product-name">Article title here</h2>
-							<p>article basic info or intro test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test .</p>
+							<h1 th:inline="text" >
+							   [[${article.subject}]]
+							</h1>
+							<h6>Visitors Rating :</h6>
+							<h5 th:text="${rating}"></h5>
+							<hr>
 						</div>
 					</div>
 					<!-- /Product details -->
+					<h3>Read:</h3>
+					<p th:text="${article.text}" ></p>
 
-					<!-- Product tab -->
-					<div class="col-md-12">
-						<div id="product-tab">
-							<!-- product tab nav -->
-							<ul class="tab-nav">
-								<li class="active"><a data-toggle="tab" href="#tab1">Main Article</a></li>
-								<li><a data-toggle="tab" href="#tab2">ratings</a></li>
-								<li><a data-toggle="tab" href="#tab3">comments</a></li>
-							</ul>
-							<!-- /product tab nav -->
-
-							<!-- product tab content -->
-							<div class="tab-content">
-								<!-- tab1  -->
-								<div id="tab1" class="tab-pane fade in active">
-									<div class="row">
-										<div class="col-md-12">
-											<p>main body of the article goes here filler filler filler filler filler filler filler filler filler filler filler filler filler filler main body of the article goes here filler filler filler filler filler filler filler filler filler filler filler filler filler filler main body of the article goes here filler filler filler filler filler filler filler filler filler filler filler filler filler filler main body of the article goes here filler filler filler filler filler filler filler filler filler filler filler filler filler filler.</p>
-										</div>
-									</div>
-								</div>
-								<!-- /tab1  -->
-
-								<!-- tab2  -->
-								<div id="tab2" class="tab-pane fade in">
-									<div class="row">
-										<!-- Rating -->
-										<div class="col-md-3">
-											<div id="rating">
-												
-												<ul class="rating">
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-														</div>
-														<div class="rating-progress">
-															<div style="width: 80%;"></div>
-														</div>
-														<span class="sum">3</span>
-													</li>
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o"></i>
-														</div>
-														<div class="rating-progress">
-															<div style="width: 60%;"></div>
-														</div>
-														<span class="sum">2</span>
-													</li>
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-														</div>
-														<div class="rating-progress">
-															<div></div>
-														</div>
-														<span class="sum">0</span>
-													</li>
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-														</div>
-														<div class="rating-progress">
-															<div></div>
-														</div>
-														<span class="sum">0</span>
-													</li>
-													<li>
-														<div class="rating-stars">
-															<i class="fa fa-star"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-															<i class="fa fa-star-o"></i>
-														</div>
-														<div class="rating-progress">
-															<div></div>
-														</div>
-														<span class="sum">0</span>
-													</li>
-												</ul>
-											</div>
-											
-										</div>
-										<!-- /Rating -->
-										
-									</div>
-									<div calss="row">
-									<div class="col-md-8">
-										<div id="review-form">
-											<form class="review-form">
-												<div class="input-rating">
-													<span>Your Rating: </span>
-													<div class="stars">
-														<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-														<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-														<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-														<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-														<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
-													</div>
-												</div>
-												<button class="primary-btn">Submit</button>
-											</form>
-										</div>
-									</div>
-								</div>
-								</div>
-								<!-- /tab2  -->
-
-								<!-- tab3  -->
-								<div id="tab3" class="tab-pane fade in">
-									<div class="row">
-										
-
-										<!-- Reviews -->
-										<div class="col-md-6">
-											<div id="reviews">
-												<ul class="reviews">
-													<li>
-														<div class="review-heading">
-															<h5 class="name">John</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-														</div>
-														<div class="review-body">
-															<p>comment #1 </p>
-														</div>
-													</li>
-													<li>
-														<div class="review-heading">
-															<h5 class="name">abbas</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-														</div>
-														<div class="review-body">
-															<p>estimation</p>
-														</div>
-													</li>
-													<li>
-														<div class="review-heading">
-															<h5 class="name">Galamee6</h5>
-															<p class="date">27 DEC 2018, 8:0 PM</p>
-														</div>
-														<div class="review-body">
-															<p>ya shaboob</p>
-														</div>
-													</li>
-												</ul>
-
-											</div>
-										</div>
-										<!-- /Reviews -->
-
-										<!-- Review Form -->
-										<div class="col-md-3">
-											<div id="review-form">
-												<form class="review-form">
-													<input class="input" type="text" placeholder="Your Name">
-													<input class="input" type="email" placeholder="Your Email">
-													<textarea class="input" placeholder="Your Review"></textarea>
-													
-													<button class="primary-btn">Submit</button>
-												</form>
-											</div>
-										</div>
-										<!-- /Review Form -->
-									</div>
-								</div>
-								<!-- /tab3  -->
-							</div>
-							<!-- /product tab content  -->
-						</div>
+					<br>
+					<br>
+					
+					<div  class="col-md-12">
+					<h3>Reviews</h3>
+					<table id="example2" class="table table-bordered table-hover">
+		                <thead>
+		                    <tr>
+		                    	<th></th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                <tr th:if="${commentsList.empty}">
+		                        <td colspan="2">No Comments Yet</td>
+		                    </tr>
+		                    <tr th:each="comment : ${commentsList}">
+		                   		<td><span th:text="${comment.commentContent}"> content </span></td>
+		                    </tr>
+		                </tbody>
+		            </table>
+					
 					</div>
-					<!-- /product tab -->
+
+		<!-- Review Form -->
+		<h3>Leave a Review</h3>
+			<div class="col-md-12">
+				<div id="review-form">
+					<form  action="#" th:action="@{/wiki/addComment/}+${{article.id}}" th:object="${comment}" method="post">
+						<div class="form-group">
+                   			<input type="text" name="commentcontent" class="form-control" placeholder="your review" th:field="*{commentContent}">
+                 		</div>
+						<button class="primary-btn">Submit</button>
+					</form>
+				</div>
+			</div>
+		<!-- /Review Form -->
+
+	<hr>
+	<br>
+	
+
+	<h3>Rate this Article</h3>
+	<div class="col-md-3">
+				<div id="review-form">
+					<form  action="#" th:action="@{/wiki/addRate/}+${{article.id}}" th:object="${rate}" method="post">
+						<div class="form-group">
+                   			<input type="number" min = "0" max="5" name="commentcontent" class="form-control" placeholder="your review" th:field="*{rateValue}">
+                 		</div>
+						<button class="primary-btn">Submit</button>
+					</form>
+				</div>
+			</div>
+
+
 				</div>
 				<!-- /row -->
 			</div>
