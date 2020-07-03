@@ -1,6 +1,5 @@
 package com.example.Articles;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +16,6 @@ public class ArticleModel  {
 	int id ;
 	String subject ;
 	String brief;
-	@Column(columnDefinition = "varchar(5000)")
 	String text ;
 	
 	

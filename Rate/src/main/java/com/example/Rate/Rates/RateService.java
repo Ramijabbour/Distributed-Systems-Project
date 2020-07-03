@@ -52,7 +52,7 @@ public class RateService {
 		{
 			return 0 ; 
 		}
-		int sum = 0;
+		int sum = 0; 
 		for(RateModel rate : RatingList)
 		{
 			sum += rate.getRateValue(); 
