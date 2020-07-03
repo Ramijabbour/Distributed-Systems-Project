@@ -19,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.WebApp.WebApp.Models.ArticleCommentRating;
+import com.example.WebApp.WebApp.Models.ArticleModel;
 import com.example.WebApp.WebApp.Models.CommentModel;
 import com.example.WebApp.WebApp.Models.RateModel;
 
@@ -74,4 +75,28 @@ public class AppController {
 		  .exchange(url, HttpMethod.POST, entity, String.class);
 		response.sendRedirect("/wiki/getArticle/"+articleId);
 	}
+	
+	@RequestMapping(method = RequestMethod.GET , value = "/addArticle")
+	public ModelAndView addArticle() {
+		ModelAndView mav = new ModelAndView("addArticle");
+		mav.addObject("article", new ArticleModel());
+		return mav ; 
+	}
+	
+	@RequestMapping(method = RequestMethod.POST , value = "/addArticle")
+	public void postArticle(@ModelAttribute ArticleModel articelModel , HttpServletResponse response )throws IOException  {
+		String url = "http://localhost:8085/api/Articles/Articles/addArticle";
+		JSONObject request = new JSONObject();
+		request.put("subject", articelModel.getSubject());
+		request.put("text", articelModel.getText());
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
+		restTemplate
+		  .exchange(url, HttpMethod.POST, entity, String.class);
+		response.sendRedirect("/wiki/addArticle");
+	}
+	
+	
 }

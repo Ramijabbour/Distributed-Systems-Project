@@ -84,7 +84,7 @@
 					<ul class="main-nav nav navbar-nav">
 						<li><a href="E:\خامسة\FILES\electro/AllArticles.html">All Articles</a></li>
 						<li><a href="E:\خامسة\FILES\electro/Categories.html">Categories</a></li>
-						<li class="active"><a href="E:\خامسة\FILES\electro/addArticle.html">Add Article</a></li>
+						<li class="active"><a href="/wiki/addArticle">Add Article</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>
@@ -105,16 +105,15 @@
                 </div>
 				<!-- row -->
 				<div class="row">
-                    <div id="review-form">
-                        <form class="review-form">
-                            <input class="input" type="text" placeholder="Name">
-                            <input class="input" type="text" placeholder="Category">
-                            <input class="input" type="text" placeholder="Article Title">
-                            <input class="input" type="text" placeholder="Article brief">
-                            <textarea class="input" placeholder="Article Content"></textarea>
-                            <button class="primary-btn">Add Article</button>
-                        </form>
-                    </div>
+                   <div id="review-form">
+					<form  action="#" th:action="@{/wiki/addArticle}" th:object="${article}" method="post">
+						<div class="form-group">
+                   			<input type="text" name="subject" class="form-control" placeholder="Article Title" th:field="*{subject}">
+                 			<textarea rows="4" cols="150" name="text" placeholder="Article Content" th:field="*{text}"></textarea>
+                 		</div>
+						<button class="primary-btn">Submit</button>
+					</form>
+				</div>
 				</div>
 				<!-- /row -->
 			</div>
