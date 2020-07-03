@@ -1,5 +1,6 @@
 package com.example.WebApp.WebApp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,9 +14,11 @@ import com.example.WebApp.WebApp.Models.ArticleCommentRating;
 @RequestMapping("/wiki")
 public class AppController {
 
+
+	@Autowired
+	public RestTemplate restTemplate ;
 	
-	RestTemplate restTemplate ; 
-	
+
 	@RequestMapping(method = RequestMethod.GET , value ="/home")
 	public ModelAndView getHomePage() {
 		ModelAndView mav = new ModelAndView("addArticle");
@@ -25,7 +28,7 @@ public class AppController {
 	@RequestMapping(method = RequestMethod.GET , value = "/getArticle/{articleId}")
 	public ArticleCommentRating getArticle(@PathVariable int articleId) {
 		System.out.println("invoke------------------------------>");
-		ArticleCommentRating articleModel = restTemplate.getForObject("http://localhost:9999/Articles/Show/"+articleId, ArticleCommentRating.class);
+		ArticleCommentRating articleModel = restTemplate.getForObject("http://localhost:8085/api/Articles/Articles/Show/"+articleId, ArticleCommentRating.class);
 		System.out.println("return ------------------------------>");
 		return articleModel ; 
 	}

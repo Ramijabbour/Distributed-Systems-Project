@@ -39,6 +39,7 @@ public class ArticleController {
 	@RequestMapping(method = RequestMethod.GET , value = "/Show/{id}")
 	public ArticleCommentRating ShowArticle(@PathVariable int id)
 	{
+		System.out.println("call for articles service ---------------------->");
 		ArticleModel article = this.articleService.getArticlesByID(id);
 		if(article == null )
 			return null ; 
@@ -52,6 +53,7 @@ public class ArticleController {
 		AllInformation.setArticle(article);
 		AllInformation.setComment(ArticleComment);
 		AllInformation.setRating(Rating);
+		System.out.println("End of articles service ---------------------->");
 		return AllInformation;
 	}
 	
