@@ -20,18 +20,15 @@ public class ArticleController {
 	ArticleService articleService;
 	
 	@Autowired
-
 	public RestTemplate restTemplate ;
-	
-	/*
-	@RequestMapping(method = RequestMethod.GET , value = "/addArticle")
-	public ModelAndView ShowaddArticle()
+
+
+	@RequestMapping(method = RequestMethod.GET , value = "/all")
+	public List<ArticleModel> allArticle()
 	{
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("article", new ArticleModel());
-		return mav;
+		List <ArticleModel> allArticle = this.articleService.GetAllArticles();
+		return allArticle;
 	}
-	*/
 
 	@RequestMapping(method = RequestMethod.POST , value = "/addArticle")
 	public void addArticle(@ModelAttribute ArticleModel article)
@@ -65,13 +62,7 @@ public class ArticleController {
 		this.articleService.deleteArticle(id);
 		//befor redirect to all article send id to comment and rating	
 	}
-	
-	@RequestMapping(method = RequestMethod.GET , value = "/all")
-	public List<ArticleModel> allArticle()
-	{
-		List <ArticleModel> allArticle = this.articleService.GetAllArticles();
-		return allArticle;
-	}
+
 
 	@RequestMapping(method = RequestMethod.GET , value = "/ArticleSearch/{subject}")
 	public ArticleList Search(@PathVariable String subject)
