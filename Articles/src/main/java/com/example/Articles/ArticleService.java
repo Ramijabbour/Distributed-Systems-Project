@@ -50,13 +50,14 @@ public class ArticleService {
 		articleID.id=id;
 		articleRepo.deleteById(id);
 		orderMessageSender.sendOrderToComment(articleID);
+		orderMessageSender.sendOrderToRating(articleID);
 
 	}
 
 
 	public List<ArticleModel> GetSearchResult(String name) {
 		List<ArticleModel> all = articleRepo.findAll();
-		List<ArticleModel> result = new ArrayList<ArticleModel>();
+		ArrayList<ArticleModel> result = new ArrayList<ArticleModel>();
 
 		for(ArticleModel article: all )
 		{
