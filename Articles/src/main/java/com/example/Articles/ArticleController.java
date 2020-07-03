@@ -55,10 +55,8 @@ public class ArticleController {
 		ArticleComment AllComments =restTemplate.getForObject("http://Comments-Service/Comments/getComments/"+article.id, ArticleComment.class);
 		List<CommentModel> ArticleComment = AllComments.getAllCommentForThisArticle();
 		System.out.println("comment line passed --------------------------->");
-		
-		//get rate for this article
-		
-		
+
+
 		float Rating =restTemplate.getForObject("http://Rating-Service/Rate/getRate/"+article.id, Float.class);
 
 		ArticleCommentRating AllInformation = new ArticleCommentRating();
