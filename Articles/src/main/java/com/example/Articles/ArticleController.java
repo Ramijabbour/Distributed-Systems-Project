@@ -3,6 +3,7 @@ package com.example.Articles;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,16 @@ public class ArticleController {
 	public RestTemplate restTemplate ;
 
 
+	
+	@Value("${eureka.instance.metadataMap.zone}")
+	private String zone ; 
+	
+	@RequestMapping("/ping")
+	public String ping() {
+		return zone ; 
+	}
+	
+	
 	@RequestMapping(method = RequestMethod.GET , value = "/all")
 	public ArticleList allArticle()
 	{

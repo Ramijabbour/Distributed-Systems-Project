@@ -7,11 +7,15 @@ server:
    
 eureka:
   instance:
-     metadataMap:
-        zone: zone1
-  
+      instance-id: discovery-4
+      metadataMap:
+            zone: zone4
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+      serviceUrl:
+         registerWithEureka: false
+         fetchRegistry: false
     
-    
+endpoints:
+   shutdown:
+      enabled: true
+      sensitive: false 

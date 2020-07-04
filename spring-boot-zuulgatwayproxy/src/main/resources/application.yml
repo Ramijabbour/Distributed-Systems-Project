@@ -13,7 +13,7 @@ eureka:
         preferSameZoneEureka: true
     instance:
         metadataMap:
-            zone: zone1
+            zone: zone4
     
         
 zuul:
