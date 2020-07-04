@@ -15,13 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class CommentsController {
 	@Autowired
 	private CommentsService commentsService ; 
+	
 	@Value("${eureka.instance.metadataMap.zone}")
-	String zone;
+	private String zone ; 
+	
 	@RequestMapping("/ping")
-	public String Ping() {
-		return zone;
+	public String ping() {
+		return zone ; 
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST , value = "/addComment")
 	public void addCommentToArticle(@RequestBody CommentModel comment) {
 		this.commentsService.addComment(comment.getCommentContent(),comment.getArticleId());
