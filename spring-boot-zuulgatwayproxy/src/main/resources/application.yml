@@ -8,12 +8,14 @@ server:
 eureka:
     client:
         serviceUrl:
-            defaultZone: http://localhost:8761/eureka
+            defaultZone: http://172.20.10.2:8761/eureka
         registerWithEureka: false
         preferSameZoneEureka: true
     instance:
-        metadataMap:
-            zone: zone1
+      prefer-ip-address: true
+      ip-address: 172.20.10.2
+      metadataMap:
+            zone: zone3
     
         
 zuul:

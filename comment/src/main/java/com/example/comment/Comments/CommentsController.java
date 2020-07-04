@@ -17,10 +17,11 @@ public class CommentsController {
 	private CommentsService commentsService ; 
 	
 	@Value("${eureka.instance.metadataMap.zone}")
-	private String zone;
-	@RequestMapping(method = RequestMethod.GET , value = "/ping")
-	public String Ping() {
-		return zone;
+	private String zone ; 
+	
+	@RequestMapping("/ping")
+	public String ping() {
+		return zone ; 
 	}
 	
 	@RequestMapping(method = RequestMethod.POST , value = "/addComment")
@@ -43,7 +44,7 @@ public class CommentsController {
 	
 	@RequestMapping("/test")
 	public CommentModel getData() {
-		return new CommentModel("test ya basha",1);
+		return new CommentModel("test ya basha mohammad",1);
 	}
 	
 }

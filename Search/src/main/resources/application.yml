@@ -9,17 +9,20 @@ server:
 eureka:
     client:
         serviceUrl:
-            defaultZone: http://localhost:8761/eureka
-            
+            defaultZone: http://172.20.10.2:8761/eureka
+
+
+
+
     instance:
-      prefer-ip-address: true
-      ip-address: 192.168.1.3
-      instance-id: Search
-      metadataMap:
-            zone: zone1
-  
+        prefer-ip-address: true
+        ip-address: 172.20.10.2
+        instance-id: Search-3
+        metadataMap:
+          zone: zone3
+
 
 endpoints:
-   shutdown:
-      enabled: true
-      sensitive: false            
+  shutdown:
+    enabled: true
+    sensitive: false

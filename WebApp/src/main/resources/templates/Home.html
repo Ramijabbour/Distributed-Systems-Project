@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Electro - HTML Ecommerce Template</title>
+		<title>All Articles </title>
 
  		<!-- Google font -->
  		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -76,8 +76,8 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-8">
 							<div class="header-search">
-								<form>
-									<input class="input" placeholder="Search here">
+								<form method ="post" action="/wiki/search">
+									<input class="input" placeholder="Search here" th:name="search">
 									<button class="search-btn">Search</button>
 								</form>
 							</div>
@@ -100,9 +100,9 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li><a href="/wiki/home">Home</a></li>
+						<li class="active"><a href="/wiki/home">Home</a></li>
 						<li><a href="/wiki/all">All Articles</a></li>
-						<li class="active"><a href="/wiki/allCategories">Categories</a></li>
+						<li><a href="/wiki/allCategories">Categories</a></li>
 						<li><a href="/wiki/addArticle">Add Article</a></li>
 					</ul>
 					<!-- /NAV -->
@@ -120,7 +120,7 @@
 			<!-- container -->
 			<div class="container">
                 <div class ="row">
-                    <h2 style="color: gray;">All Categories</h2>
+                    <h2 style="color: gray;">All Articles</h2>
                 </div>
                 <hr>
 				<!-- row -->
@@ -128,21 +128,24 @@
                     <table id="example2">
                         <thead>
                             <tr>
-                                <th>Category</th>
+                                <th>Article Title</th>
+
+                                <th> Category </th>
                                 
-                                <th> Disc </th>
+                                <th> brief </th>
 
                                 <th> Link </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr >
-                                <td><span> Category Name</span></td>
-                                <td><span> Test Disc </span></td>
+                            <tr th:each="article : ${articles}">
+                                <td th:text="${article.subject}"></td>
+                                <td><span> Category </span></td>
+                                <td th:text="${article.brief}"></td>
                                 <td>
                                     <form action="#">
                                         <button class="primary-btn" type="submit">
-                                            <i>Go To Category</i>
+                                            <i>Go To Article</i>
                                         </button>
                                     </form>
                                 </td>
