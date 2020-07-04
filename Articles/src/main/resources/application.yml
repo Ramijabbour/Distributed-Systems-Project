@@ -19,7 +19,7 @@ eureka:
     instance:
       prefer-ip-address: true
       ip-address: 192.168.1.8
-      instance-id: 192.168.1.8:9999
+      instance-id: Article-1
       metadataMap:
             zone: zone2
   
