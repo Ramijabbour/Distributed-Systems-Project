@@ -20,7 +20,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
@@ -71,9 +70,10 @@ public class AppController {
 	
 	
 	@RequestMapping(method = RequestMethod.POST , value ="/search")
-	public ModelAndView getArticleSearchPage(@RequestParam("search") String title) {
+	public ModelAndView getArticleSearchPage(@RequestParam("value") String value) {
 		ModelAndView mav = new ModelAndView("ArticlesSearch");
-		ArticleList AllArticles = restTemplate.getForObject("http://localhost:8085/api/Search/Search/"+title,ArticleList.class);
+		System.out.println("testt : "+  value);
+		ArticleList AllArticles = restTemplate.getForObject("http://localhost:8085/api/Search/Search/"+value,ArticleList.class);
 		
 		List<ArticleModel> articles = AllArticles.getArticle();
 		mav.addObject("Allarticles",articles);

@@ -75,7 +75,7 @@ public class ArticleController {
 		//befor redirect to all article send id to comment and rating	
 	}
 
-
+/*
 	@RequestMapping(method = RequestMethod.GET , value = "/ArticleSearch/{subject}")
 	public ArticleList Search(@PathVariable String subject)
 	{
@@ -83,15 +83,21 @@ public class ArticleController {
 		ArticleList articleList= new ArticleList();
 		articleList.setArticle(allArticle);
 		return articleList;
-	}
+	}*/
 
 	@RequestMapping(method = RequestMethod.GET , value = "/test")
 	public ArticleModel test()
 	{
 
 		ArticleModel a = new ArticleModel();
-		a.setSubject("test");
+		a.setSubject("Article");
 		a.setText("sdghdgsdfdg");
+		articleService.addArticle(a);
+
+		ArticleModel a1 = new ArticleModel();
+		a1.setSubject("Article2");
+		a.setText("asdafdsgd");
+		articleService.addArticle(a1);
 		return  a;
 
 	}

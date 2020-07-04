@@ -9,15 +9,8 @@ eureka:
   instance:
      metadataMap:
         zone: zone1
-     prefer-ip-address: true
-     ip-address: 192.168.43.81
-     instance-id: Eureka   
   
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: false
-    
-    serviceUrl:
-            defaultZone: http://192.168.43.44:8761/eureka,http://192.168.43.245:8761/eureka
-    
     
