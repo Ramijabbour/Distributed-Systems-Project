@@ -2,10 +2,10 @@ spring:
    application:
       name: Rating-Service
    rabbitmq:
-     host: localhost
+     host: 172.20.10.2
      port: 5672
-     username: guest
-     password: guest
+     username: test
+     password: test
      
 server:
   port: ${PORT:8099}
@@ -14,11 +14,11 @@ server:
 eureka:
     client:
         serviceUrl:
-            defaultZone: http://192.168.43.81:8761/eureka
+            defaultZone: http://172.20.10.2:8761/eureka
 
     instance:
       prefer-ip-address: true
-      ip-address: 192.168.43.41
+      ip-address: 172.20.10.2
       instance-id: Rate-3
       metadataMap:
         zone: zone3

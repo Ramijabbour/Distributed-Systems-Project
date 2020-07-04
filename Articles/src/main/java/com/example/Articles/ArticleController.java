@@ -23,12 +23,6 @@ public class ArticleController {
 
 	@Autowired
 	public RestTemplate restTemplate ;
-	@Value("${eureka.instance.metadataMap.zone}")
-	String zone;
-	@RequestMapping("/ping")
-	public String Ping() {
-		return zone;
-	}
 
 	@Value("${eureka.instance.metadataMap.zone}")
 	private String zone;
