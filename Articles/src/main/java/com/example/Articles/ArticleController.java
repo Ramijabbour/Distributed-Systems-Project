@@ -78,18 +78,20 @@ public class ArticleController {
 	{
 		this.articleService.deleteArticle(id);
 		orderMessageSender.sendOrderToComment(new ArticleID(id));
+		orderMessageSender.sendOrderToRating(new ArticleID(id));
+		
 		return "ok";
 	}
 
 
-	@RequestMapping(method = RequestMethod.GET , value = "/ArticleSearch/{subject}")
+	/*@RequestMapping(method = RequestMethod.GET , value = "/ArticleSearch/{subject}")
 	public ArticleList Search(@PathVariable String subject)
 	{
 		List <ArticleModel> allArticle = this.articleService.GetSearchResult(subject);
 		ArticleList articleList= new ArticleList();
 		articleList.setArticle(allArticle);
 		return articleList;
-	}
+	}*/
 
 	@RequestMapping(method = RequestMethod.GET , value = "/test")
 	public ArticleModel test()
