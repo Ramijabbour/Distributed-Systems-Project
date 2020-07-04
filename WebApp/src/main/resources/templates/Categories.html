@@ -76,8 +76,8 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-8">
 							<div class="header-search">
-								<form>
-									<input class="input" placeholder="Search here">
+								<form method ="post" action="/wiki/search">
+									<input class="input" placeholder="Search here" th:name="search">
 									<button class="search-btn">Search</button>
 								</form>
 							</div>
