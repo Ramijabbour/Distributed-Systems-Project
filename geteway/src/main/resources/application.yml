@@ -31,6 +31,10 @@ zuul:
       Search-Service:
         path: /Search/**
         serviceId: Search-Service
+      RelatedArticles-Service:
+        path: /Related/**
+        serviceId: RelatedArticles-Service
+
 
 ribbon:
    eureka:
