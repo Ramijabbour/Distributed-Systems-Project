@@ -30,6 +30,12 @@ public class ArticleController {
 		return zone;
 	}
 
+	@Value("${eureka.instance.metadataMap.zone}")
+	private String zone;
+	@RequestMapping(method = RequestMethod.GET , value = "/ping")
+	public String Ping() {
+		return zone;
+	}
 
 	@RequestMapping(method = RequestMethod.GET , value = "/all")
 	public ArticleList allArticle()
