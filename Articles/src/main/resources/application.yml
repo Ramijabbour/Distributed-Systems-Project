@@ -12,7 +12,6 @@ server:
   
   
 eureka:
-    name: Article
     client:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka

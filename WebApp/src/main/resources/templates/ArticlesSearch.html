@@ -76,8 +76,8 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-8">
 							<div class="header-search">
-								<form method ="post" action="/wiki/search">
-									<input class="input" placeholder="Search here" th:name="search">
+								<form>
+									<input class="input" placeholder="Search here">
 									<button class="search-btn">Search</button>
 								</form>
 							</div>
@@ -137,8 +137,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="article : ${articles}">
-                                <td th:text="${article.subject}"></td>
+                            <tr th:each="article : ${Allarticles}">
+                                <td th:text="${article.subject}"></span></td>
                                 <td><span> Category </span></td>
                                 <td th:text="${article.brief}"></td>
                                 <td>
