@@ -85,61 +85,67 @@ public class AppController {
 	
 
 
-@RequestMapping(method = RequestMethod.POST , value = "/addComment/{articleId}")
-public void addCommentToArticle(@PathVariable int articleId,@ModelAttribute CommentModel commentModel,HttpServletResponse response)throws IOException {
-	commentModel.setArticleId(articleId);
-	
-	String url = "http://"+gateWay+":8085/api/Comments/Comments/addComment";
-	JSONObject request = new JSONObject();
-	request.put("articleId", articleId);
-	request.put("commentContent", commentModel.getCommentContent());
-	
-	HttpHeaders headers = new HttpHeaders();
-	headers.setContentType(MediaType.APPLICATION_JSON);
-	HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
-	restTemplate
-	  .exchange(url, HttpMethod.POST, entity, String.class);
-	response.sendRedirect("/wiki/getArticle/"+articleId);
-}
+	@RequestMapping(method = RequestMethod.POST , value = "/addComment/{articleId}")
+	public void addCommentToArticle(@PathVariable int articleId,@ModelAttribute CommentModel commentModel,HttpServletResponse response)throws IOException {
+		commentModel.setArticleId(articleId);
+		
+		String url = "http://"+gateWay+":8085/api/Comments/Comments/addComment";
+		JSONObject request = new JSONObject();
+		request.put("articleId", articleId);
+		request.put("commentContent", commentModel.getCommentContent());
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
+		restTemplate
+		  .exchange(url, HttpMethod.POST, entity, String.class);
+		response.sendRedirect("/wiki/getArticle/"+articleId);
+	}
 
-@RequestMapping(method = RequestMethod.POST , value = "/addRate/{articleId}")
-public void addRateToArticle(@PathVariable int articleId,@ModelAttribute RateModel rateModel ,HttpServletResponse response) throws IOException {
-	rateModel.setArticleId(articleId);
-	String url = "http://"+gateWay+":8085/api/Rate/Rate/addRate";
-	JSONObject request = new JSONObject();
-	request.put("articleId", articleId);
-	request.put("rateValue", rateModel.getRateValue());
+	@RequestMapping(method = RequestMethod.POST , value = "/addRate/{articleId}")
+	public void addRateToArticle(@PathVariable int articleId,@ModelAttribute RateModel rateModel ,HttpServletResponse response) throws IOException {
+		rateModel.setArticleId(articleId);
+		String url = "http://"+gateWay+":8085/api/Rate/Rate/addRate";
+		JSONObject request = new JSONObject();
+		request.put("articleId", articleId);
+		request.put("rateValue", rateModel.getRateValue());
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
+		restTemplate
+		  .exchange(url, HttpMethod.POST, entity, String.class);
+		response.sendRedirect("/wiki/getArticle/"+articleId);
+	}
+
+
+	@RequestMapping(method = RequestMethod.GET , value = "/addArticle")
+	public ModelAndView addArticle() {
+		ModelAndView mav = new ModelAndView("addArticle");
+		mav.addObject("article", new ArticleModel());
+		return mav ; 
+	}
+
+	@RequestMapping(method = RequestMethod.POST , value = "/addArticle")
+	public void postArticle(@ModelAttribute ArticleModel articelModel , HttpServletResponse response )throws IOException  {
+		String url = "http://"+gateWay+":8085/api/Articles/Articles/addArticle";
+		JSONObject request = new JSONObject();
+		request.put("subject", articelModel.getSubject());
+		request.put("text", articelModel.getText());
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
+		restTemplate
+		  .exchange(url, HttpMethod.POST, entity, String.class);
+		response.sendRedirect("/wiki/all");
+	}
 	
-	HttpHeaders headers = new HttpHeaders();
-	headers.setContentType(MediaType.APPLICATION_JSON);
-	HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
-	restTemplate
-	  .exchange(url, HttpMethod.POST, entity, String.class);
-	response.sendRedirect("/wiki/getArticle/"+articleId);
-}
-
-
-@RequestMapping(method = RequestMethod.GET , value = "/addArticle")
-public ModelAndView addArticle() {
-	ModelAndView mav = new ModelAndView("addArticle");
-	mav.addObject("article", new ArticleModel());
-	return mav ; 
-}
-
-@RequestMapping(method = RequestMethod.POST , value = "/addArticle")
-public void postArticle(@ModelAttribute ArticleModel articelModel , HttpServletResponse response )throws IOException  {
-	String url = "http://"+gateWay+":8085/api/Articles/Articles/addArticle";
-	JSONObject request = new JSONObject();
-	request.put("subject", articelModel.getSubject());
-	request.put("text", articelModel.getText());
-	
-	HttpHeaders headers = new HttpHeaders();
-	headers.setContentType(MediaType.APPLICATION_JSON);
-	HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
-	restTemplate
-	  .exchange(url, HttpMethod.POST, entity, String.class);
-	response.sendRedirect("/wiki/all");
-}
+	@RequestMapping(method = RequestMethod.GET , value = "/deleteArticle/{articleId}")
+	public void deleteArticle(@PathVariable int articleId , HttpServletResponse response )throws IOException {
+		restTemplate.getForObject("http://"+gateWay+":8085/api/Articles/Articles/delete/"+articleId, String.class);
+		response.sendRedirect("/wiki/all");
+	}
 	
 	
 }

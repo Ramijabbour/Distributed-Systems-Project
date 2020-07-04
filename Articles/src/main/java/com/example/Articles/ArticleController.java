@@ -13,6 +13,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.ExternalModel.ArticleComment;
 import com.example.ExternalModel.CommentModel;
+import com.example.MQ.OrderMessageSender;
+import com.example.MQ.ModelToSend.ArticleID;
 
 @RestController
 @RequestMapping("/Articles")
@@ -22,6 +24,10 @@ public class ArticleController {
 
 	@Autowired
 	public RestTemplate restTemplate ;
+	
+	@Autowired
+	private OrderMessageSender orderMessageSender ; 
+	
 	@Value("${eureka.instance.metadataMap.zone}")
 	String zone;
 	@RequestMapping("/ping")
@@ -67,10 +73,11 @@ public class ArticleController {
 	
 	
 	@RequestMapping(method = RequestMethod.GET , value = "/delete/{id}")
-	public void deleteArticle(@PathVariable int id)
+	public String deleteArticle(@PathVariable int id)
 	{
 		this.articleService.deleteArticle(id);
-		//befor redirect to all article send id to comment and rating	
+		orderMessageSender.sendOrderToComment(new ArticleID(id));
+		return "ok";
 	}
 
 /*

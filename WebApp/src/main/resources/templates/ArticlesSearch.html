@@ -143,11 +143,11 @@
                                 <td><span> Category </span></td>
                                 <td th:text="${article.brief}"></td>
                                 <td>
-                                    <form action="#">
-                                        <button class="primary-btn" type="submit">
-                                            <i>Go To Article</i>
-                                        </button>
-                                    </form>
+                                    <form action="#" th:action="@{/wiki/getArticle/}+ ${{article.id}} " method="get">
+                              			<button th:id="'table_entry_childs_button_' + ${article.id}" class="primary-btn" type="submit">
+                                  			<i>Go To Article</i>
+                             			</button>
+                          			</form>
                                 </td>
                             </tr>
                         </tbody>
