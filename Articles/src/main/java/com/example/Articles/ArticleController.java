@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +30,12 @@ public class ArticleController {
 	private OrderMessageSender orderMessageSender ; 
 	
 	@Value("${eureka.instance.metadataMap.zone}")
-	String zone;
-	@RequestMapping("/ping")
+	private String zone;
+	@RequestMapping(method = RequestMethod.GET , value = "/ping")
 	public String Ping() {
 		return zone;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET , value = "/all")
 	public ArticleList allArticle()
 	{
@@ -80,7 +81,7 @@ public class ArticleController {
 		return "ok";
 	}
 
-/*
+
 	@RequestMapping(method = RequestMethod.GET , value = "/ArticleSearch/{subject}")
 	public ArticleList Search(@PathVariable String subject)
 	{
@@ -88,25 +89,46 @@ public class ArticleController {
 		ArticleList articleList= new ArticleList();
 		articleList.setArticle(allArticle);
 		return articleList;
-	}*/
+	}
 
 	@RequestMapping(method = RequestMethod.GET , value = "/test")
 	public ArticleModel test()
 	{
 
 		ArticleModel a = new ArticleModel();
-		a.setSubject("Article");
+		a.setSubject("test");
 		a.setText("sdghdgsdfdg");
-		articleService.addArticle(a);
-
-		ArticleModel a1 = new ArticleModel();
-		a1.setSubject("Article2");
-		a.setText("asdafdsgd");
-		articleService.addArticle(a1);
 		return  a;
 
 	}
 
+
+    @RequestMapping(method = RequestMethod.GET , value = "/inject")
+    public void inject()
+    {
+
+
+        ArticleModel a3 = new ArticleModel("كسر العظم","عن العظم","طبية","مقال عن كسر العظم و شرح كسر الساق ....");
+        articleService.addArticle(a3);
+        ArticleModel a4 = new ArticleModel("فيروس كورونا","فيروسات","طبية","فيروس كورونا من اخطر الفيروسات ....");
+        articleService.addArticle(a4);
+        ArticleModel a5 = new ArticleModel("مرض السارس","جراثيم و فيروسات","طبية","ظهر مرض السارس في القرن ...");
+        articleService.addArticle(a5);
+        ArticleModel a6= new ArticleModel("الغدقة الدرقية","بكتيرياوجراثيم","جراحة","يعد مرض الغدة الدرقية من الامراض....");
+        articleService.addArticle(a6);
+//        ArticleModel a7= new ArticleModel();
+//        ArticleModel a8= new ArticleModel();
+//        ArticleModel a9= new ArticleModel();
+//        ArticleModel a10= new ArticleModel();
+//        ArticleModel a11= new ArticleModel();
+//        ArticleModel a12= new ArticleModel();
+//        ArticleModel a13= new ArticleModel();
+//        ArticleModel a14 = new ArticleModel();
+//        ArticleModel a15 = new ArticleModel();
+//
+//        articleService.addArticle();
+
+    }
 
 
 }
