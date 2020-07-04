@@ -82,14 +82,14 @@ public class ArticleController {
 	}
 
 
-	@RequestMapping(method = RequestMethod.GET , value = "/ArticleSearch/{subject}")
-	public ArticleList Search(@PathVariable String subject)
-	{
-		List <ArticleModel> allArticle = this.articleService.GetSearchResult(subject);
-		ArticleList articleList= new ArticleList();
-		articleList.setArticle(allArticle);
-		return articleList;
-	}
+//	@RequestMapping(method = RequestMethod.GET , value = "/ArticleSearch/{subject}")
+//	public ArticleList Search(@PathVariable String subject)
+//	{
+//		List <ArticleModel> allArticle = this.articleService.GetSearchResult(subject);
+//		ArticleList articleList= new ArticleList();
+//		articleList.setArticle(allArticle);
+//		return articleList;
+//	}
 
 	@RequestMapping(method = RequestMethod.GET , value = "/test")
 	public ArticleModel test()

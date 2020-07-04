@@ -29,7 +29,7 @@ public class RelatedArticleController {
 
             if (articleModel.getCategory().equals(Category)) {
                 filterArticle.add(articleModel);
-                // break;
+
 
             }
         }

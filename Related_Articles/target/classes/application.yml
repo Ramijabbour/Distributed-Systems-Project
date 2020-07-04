@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: RelatedArticles-Service
+
+server:
+  port: ${PORT:8088}
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.1.8:8761/eureka
+
+
+
+
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.1.8
+    instance-id: RelatedArticles-3
+    metadataMap:
+      zone: zone3
+
+
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
