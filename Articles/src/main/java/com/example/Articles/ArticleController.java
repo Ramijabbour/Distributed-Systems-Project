@@ -20,10 +20,22 @@ import com.example.ExternalModel.CommentModel;
 public class ArticleController {
 	@Autowired 
 	ArticleService articleService;
-	
+
 	@Autowired
 	public RestTemplate restTemplate ;
+	@Value("${eureka.instance.metadataMap.zone}")
+	String zone;
+	@RequestMapping("/ping")
+	public String Ping() {
+		return zone;
+	}
 
+	@Value("${eureka.instance.metadataMap.zone}")
+	private String zone;
+	@RequestMapping(method = RequestMethod.GET , value = "/ping")
+	public String Ping() {
+		return zone;
+	}
 
 	
 	@Value("${eureka.instance.metadataMap.zone}")

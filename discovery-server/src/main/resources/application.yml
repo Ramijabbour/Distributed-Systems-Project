@@ -7,15 +7,17 @@ server:
    
 eureka:
   instance:
-      instance-id: discovery-4
-      metadataMap:
-            zone: zone4
+     metadataMap:
+        zone: zone1
+     prefer-ip-address: true
+     ip-address: 192.168.43.81
+     instance-id: Eureka   
+  
   client:
-      serviceUrl:
-         registerWithEureka: false
-         fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: false
     
-endpoints:
-   shutdown:
-      enabled: true
-      sensitive: false 
+    serviceUrl:
+            defaultZone: http://192.168.43.44:8761/eureka,http://192.168.43.245:8761/eureka
+    
+    

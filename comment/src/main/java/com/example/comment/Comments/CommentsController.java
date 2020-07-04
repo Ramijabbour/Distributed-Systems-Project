@@ -44,7 +44,7 @@ public class CommentsController {
 	
 	@RequestMapping("/test")
 	public CommentModel getData() {
-		return new CommentModel("test ya basha",1);
+		return new CommentModel("test ya basha mohammad",1);
 	}
 	
 }
