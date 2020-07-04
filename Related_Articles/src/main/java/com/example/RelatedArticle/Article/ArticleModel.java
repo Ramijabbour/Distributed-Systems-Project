@@ -1,5 +1,4 @@
-package com.example.demo;
-
+package com.example.RelatedArticle.Article;
 
 public class ArticleModel {
 
