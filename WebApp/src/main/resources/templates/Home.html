@@ -100,7 +100,7 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li><a href="/wiki/home">Home</a></li>
+						<li class="active"><a href="/wiki/home">Home</a></li>
 						<li><a href="/wiki/all">All Articles</a></li>
 						<li><a href="/wiki/allCategories">Categories</a></li>
 						<li><a href="/wiki/addArticle">Add Article</a></li>
@@ -138,8 +138,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="article : ${Allarticles}">
-                                <td th:text="${article.subject}"></span></td>
+                            <tr th:each="article : ${articles}">
+                                <td th:text="${article.subject}"></td>
                                 <td><span> Category </span></td>
                                 <td th:text="${article.brief}"></td>
                                 <td>

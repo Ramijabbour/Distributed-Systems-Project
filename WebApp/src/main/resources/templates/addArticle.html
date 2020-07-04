@@ -49,7 +49,7 @@
 						<div class="col-md-4">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="./img/logo_wiki.jpg" alt="">
+									<img src="/../.././img/logo_wiki.jpg" alt="">
 								</a>
 							</div>
 						</div>
@@ -58,8 +58,8 @@
 						<!-- SEARCH BAR -->
 						<div class="col-md-8">
 							<div class="header-search">
-								<form>
-									<input class="input" placeholder="Search here">
+								<form method ="post" action="/wiki/search">
+									<input class="input" placeholder="Search here" th:name="search">
 									<button class="search-btn">Search</button>
 								</form>
 							</div>
@@ -82,8 +82,9 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li><a href="E:\خامسة\FILES\electro/AllArticles.html">All Articles</a></li>
-						<li><a href="E:\خامسة\FILES\electro/Categories.html">Categories</a></li>
+						<li><a href="/wiki/home">Home</a></li>
+						<li><a href="/wiki/all">All Articles</a></li>
+						<li><a href="/wiki/allCategories">Categories</a></li>
 						<li class="active"><a href="/wiki/addArticle">Add Article</a></li>
 					</ul>
 					<!-- /NAV -->

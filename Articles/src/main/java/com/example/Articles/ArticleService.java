@@ -55,7 +55,7 @@ public class ArticleService {
 	}
 
 
-	public List<ArticleModel> GetSearchResult(String name) {
+	/*public List<ArticleModel> GetSearchResult(String name) {
 		List<ArticleModel> all = articleRepo.findAll();
 		ArrayList<ArticleModel> result = new ArrayList<ArticleModel>();
 
@@ -66,5 +66,5 @@ public class ArticleService {
 		}
 		return result;
 
-	}
+	}*/
 }

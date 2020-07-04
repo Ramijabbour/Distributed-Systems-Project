@@ -20,7 +20,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
@@ -37,11 +36,11 @@ public class AppController {
 	public RestTemplate restTemplate ;
 
 	
-	private String gateWay = "loaclhost"; 
+	private String gateWay = "localhost"; 
 
 	@RequestMapping(method = RequestMethod.GET , value ="/home")
 	public ModelAndView getHomePage() {
-		ModelAndView mav = new ModelAndView("addArticle");
+		ModelAndView mav = new ModelAndView("Home");
 		return mav  ;
 	}
 
@@ -49,6 +48,7 @@ public class AppController {
 	
 	@RequestMapping(method = RequestMethod.GET , value = "/getArticle/{articleId}")
 		public ModelAndView getArticle(@PathVariable int articleId) {	
+		System.out.println("http://"+gateWay+":8085/api/Articles/Articles/Show/");
 		ArticleCommentRating articleModel = restTemplate.getForObject("http://"+gateWay+":8085/api/Articles/Articles/Show/"+articleId, ArticleCommentRating.class);		
 		ModelAndView mav = new ModelAndView("viewArticle");
 		mav.addObject("article", articleModel.getArticle());
