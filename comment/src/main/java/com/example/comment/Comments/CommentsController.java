@@ -1,6 +1,7 @@
 package com.example.comment.Comments;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class CommentsController {
 	@Autowired
 	private CommentsService commentsService ; 
+	
+	@Value("${eureka.instance.metadataMap.zone}")
+	private String zone;
+	@RequestMapping(method = RequestMethod.GET , value = "/ping")
+	public String Ping() {
+		return zone;
+	}
 	
 	@RequestMapping(method = RequestMethod.POST , value = "/addComment")
 	public void addCommentToArticle(@RequestBody CommentModel comment) {

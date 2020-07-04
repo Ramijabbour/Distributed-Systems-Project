@@ -10,3 +10,16 @@ eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka
+            
+    instance:
+      prefer-ip-address: true
+      ip-address: 192.168.43.81
+      instance-id: Search
+      metadataMap:
+            zone: zone1
+  
+
+endpoints:
+   shutdown:
+      enabled: true
+      sensitive: false            
