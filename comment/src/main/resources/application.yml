@@ -2,10 +2,10 @@ spring:
    application:
       name: Comments-Service
    rabbitmq:
-     host: 192.168.1.8
+     host: localhost
      port: 5672
-     username: test
-     password: test
+     username: guest
+     password: guest
      
 server:
   port: ${PORT:8082}
@@ -14,7 +14,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: 192.168.1.8:8761/eureka
+      defaultZone: http://localhost:8761/eureka
   instance:
     prefer-ip-address: true
     ip-address: 192.168.1.8
