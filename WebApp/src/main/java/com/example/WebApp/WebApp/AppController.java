@@ -48,7 +48,7 @@ public class AppController {
 	
 	@RequestMapping(method = RequestMethod.GET , value = "/getArticle/{articleId}")
 		public ModelAndView getArticle(@PathVariable int articleId) {	
-		ArticleCommentRating articleModel = restTemplate.getForObject("http://localhost:8085/api/Articles/Articles/Show/"+articleId, ArticleCommentRating.class);		
+		ArticleCommentRating articleModel = restTemplate.getForObject("http://localhost:8085/api/Articles/Articles/Show/"+articleId, ArticleCommentRating.class);
 		ModelAndView mav = new ModelAndView("viewArticle");
 		mav.addObject("article", articleModel.getArticle());
 		mav.addObject("commentsList", articleModel.getComment());

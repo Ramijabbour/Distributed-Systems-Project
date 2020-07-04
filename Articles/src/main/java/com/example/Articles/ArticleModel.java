@@ -19,8 +19,6 @@ public class ArticleModel  {
 	String brief;
 	@Column(columnDefinition = "varchar(5000)")
 	String text ;
-	
-	
 	public ArticleModel() {
 		
 	}
