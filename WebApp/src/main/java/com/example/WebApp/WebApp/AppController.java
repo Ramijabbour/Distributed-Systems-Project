@@ -132,6 +132,7 @@ public class AppController {
 		JSONObject request = new JSONObject();
 		request.put("subject", articelModel.getSubject());
 		request.put("text", articelModel.getText());
+		request.put("category", articelModel.getCategory());
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -147,5 +148,15 @@ public class AppController {
 		response.sendRedirect("/wiki/all");
 	}
 	
+	
+	@RequestMapping(method = RequestMethod.GET , value = "/related/{category}")
+	public ModelAndView getRelatedArticles(@PathVariable String category) {
+		ModelAndView mav = new ModelAndView("AllArticles");
+		ArticleList AllArticles = restTemplate.getForObject("http://"+gateWay+":8085/api/Related/RelatedArticle/"+category,ArticleList.class);
+		List <ArticleModel> articles = AllArticles.getArticle();
+		mav.addObject("articles",articles);
+		return mav  ;
+		
+	}
 	
 }

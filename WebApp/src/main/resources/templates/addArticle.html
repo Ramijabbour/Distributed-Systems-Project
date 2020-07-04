@@ -110,6 +110,7 @@
 					<form  action="#" th:action="@{/wiki/addArticle}" th:object="${article}" method="post">
 						<div class="form-group">
                    			<input type="text" name="subject" class="form-control" placeholder="Article Title" th:field="*{subject}">
+                   			<input type="text" name="subject" class="form-control" placeholder="Article Category" th:field="*{Category}">
                  			<textarea rows="4" cols="150" name="text" placeholder="Article Content" th:field="*{text}"></textarea>
                  		</div>
 						<button class="primary-btn">Submit</button>

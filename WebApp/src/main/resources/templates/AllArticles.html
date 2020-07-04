@@ -132,16 +132,13 @@
 
                                 <th> Category </th>
                                 
-                                <th> brief </th>
-
                                 <th> Link </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="article : ${articles}">
                                 <td th:text="${article.subject}"></td>
-                                <td><span> Category </span></td>
-                                <td th:text="${article.brief}"></td>
+                                <td th:text="${article.Category}"></td>
                                 <td>
                           			<form action="#" th:action="@{/wiki/getArticle/}+ ${{article.id}} " method="get">
                               			<button th:id="'table_entry_childs_button_' + ${article.id}" class="primary-btn" type="submit">

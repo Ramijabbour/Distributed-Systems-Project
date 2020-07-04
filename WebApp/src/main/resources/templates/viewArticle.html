@@ -111,6 +111,8 @@
 							</h1>
 							<h6>Visitors Rating :</h6>
 							<h5 th:text="${rating}"></h5>
+							<h6>Category :</h6>
+							<h5 th:text="${Category}"></h5>
 							<hr>
 						</div>
 					</div>
@@ -171,10 +173,18 @@
 				</div>
 			</div>
 
-	<div class="col-md-3">
+			<div class="col-md-3">
 				<div id="review-form">
 					<form  action="#" th:action="@{/wiki/deleteArticle/}+${{article.id}}" th:object="${rate}" method="get">
 						<button class="primary-btn">Delete</button>
+					</form>
+				</div>
+			</div>
+			
+			<div class="col-md-3">
+				<div id="review-form">
+					<form  action="#" th:action="@{/wiki/related/}+${{article.Category}}" th:object="${rate}" method="get">
+						<button class="primary-btn">Related Articles</button>
 					</form>
 				</div>
 			</div>
@@ -185,112 +195,6 @@
 			<!-- /container -->
 		</div>
 		<!-- /SECTION -->
-
-		<!-- Section -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-
-					<div class="col-md-12">
-						<div class="section-title text-center">
-							<h3 class="title">Related Articles</h3>
-						</div>
-					</div>
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-body">
-								<p class="product-category">Article Category</p>
-								<h3 class="product-name"><a href="#">Article title here</a></h3>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">view Article</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Go To Article</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-body">
-								<p class="product-category">Article Category</p>
-								<h3 class="product-name"><a href="#">Article title here</a></h3>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">view Article</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Go To Article</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-body">
-								<p class="product-category">Article Category</p>
-								<h3 class="product-name"><a href="#">Article title here</a></h3>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">view Article</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Go To Article</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-					<!-- product -->
-					<div class="col-md-3 col-xs-6">
-						<div class="product">
-							<div class="product-body">
-								<p class="product-category">Article Category</p>
-								<h3 class="product-name"><a href="#">Article title here</a></h3>
-								<div class="product-rating">
-								</div>
-								<div class="product-btns">
-									
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">view Article</span></button>
-								</div>
-							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Go To Article</button>
-							</div>
-						</div>
-					</div>
-					<!-- /product -->
-
-
-
-			
-
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /Section -->
-
-
 
 		<!-- FOOTER -->
 		<footer id="footer">

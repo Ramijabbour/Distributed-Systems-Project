@@ -4,6 +4,7 @@ public class ArticleModel {
 	int id ;
 	String subject ; 
 	String brief;
+	String Category;
 	String text ;
 	
 	
@@ -46,5 +47,15 @@ public class ArticleModel {
 
 	public void setBrief(String brief) {
 		this.brief = brief;
+	}
+
+	public String getCategory() {
+		return Category;
+	}
+
+	public void setCategory(String category) {
+		Category = category;
 	} 
+	
+	
 }
