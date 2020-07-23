@@ -36,7 +36,9 @@ public class AppController {
 	public RestTemplate restTemplate ;
 
 	
-	private String gateWay = "localhost"; 
+	private String gateWay = "192.168.1.9"; 
+	
+	private String port = "8085" ; 
 
 	@RequestMapping(method = RequestMethod.GET , value ="/home")
 	public ModelAndView getHomePage() {
@@ -49,7 +51,7 @@ public class AppController {
 	@RequestMapping(method = RequestMethod.GET , value = "/getArticle/{articleId}")
 		public ModelAndView getArticle(@PathVariable int articleId) {	
 		System.out.println("http://"+gateWay+":8085/api/Articles/Articles/Show/");
-		ArticleCommentRating articleModel = restTemplate.getForObject("http://"+gateWay+":8085/api/Articles/Articles/Show/"+articleId, ArticleCommentRating.class);		
+		ArticleCommentRating articleModel = restTemplate.getForObject("http://"+gateWay+":"+port+"/api/Articles/Articles/Show/"+articleId, ArticleCommentRating.class);		
 		ModelAndView mav = new ModelAndView("viewArticle");
 		mav.addObject("article", articleModel.getArticle());
 		mav.addObject("commentsList", articleModel.getComment());
@@ -64,7 +66,7 @@ public class AppController {
 	@RequestMapping(method = RequestMethod.GET , value ="/all")
 	public ModelAndView getAllArticlePage() {
 		ModelAndView mav = new ModelAndView("AllArticles");
-		ArticleList AllArticles = restTemplate.getForObject("http://"+gateWay+":8085/api/Articles/Articles/all",ArticleList.class);
+		ArticleList AllArticles = restTemplate.getForObject("http://"+gateWay+":"+port+"/api/Articles/Articles/all",ArticleList.class);
 		List <ArticleModel> articles = AllArticles.getArticle();
 		mav.addObject("articles",articles);
 		return mav  ;
@@ -74,7 +76,7 @@ public class AppController {
 	@RequestMapping(method = RequestMethod.POST , value ="/search")
 	public ModelAndView getArticleSearchPage(@RequestParam("search") String title) {
 		ModelAndView mav = new ModelAndView("ArticlesSearch");
-		ArticleList AllArticles = restTemplate.getForObject("http://"+gateWay+":8085/api/Search/Search/"+title,ArticleList.class);
+		ArticleList AllArticles = restTemplate.getForObject("http://"+gateWay+":"+port+"/api/Search/Search/"+title,ArticleList.class);
 		
 		List<ArticleModel> articles = AllArticles.getArticle();
 		mav.addObject("Allarticles",articles);
@@ -89,7 +91,7 @@ public class AppController {
 	public void addCommentToArticle(@PathVariable int articleId,@ModelAttribute CommentModel commentModel,HttpServletResponse response)throws IOException {
 		commentModel.setArticleId(articleId);
 		
-		String url = "http://"+gateWay+":8085/api/Comments/Comments/addComment";
+		String url = "http://"+gateWay+":"+port+"/api/Comments/Comments/addComment";
 		JSONObject request = new JSONObject();
 		request.put("articleId", articleId);
 		request.put("commentContent", commentModel.getCommentContent());
@@ -105,16 +107,19 @@ public class AppController {
 	@RequestMapping(method = RequestMethod.POST , value = "/addRate/{articleId}")
 	public void addRateToArticle(@PathVariable int articleId,@ModelAttribute RateModel rateModel ,HttpServletResponse response) throws IOException {
 		rateModel.setArticleId(articleId);
-		String url = "http://"+gateWay+":8085/api/Rate/Rate/addRate";
+		System.out.println("pass-1--------------------------");
+		String url = "http://"+gateWay+":"+port+"/api/Rate/Rate/addRate";
 		JSONObject request = new JSONObject();
 		request.put("articleId", articleId);
 		request.put("rateValue", rateModel.getRateValue());
-		
+		System.out.println("pass--2-------------------------");
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
+		System.out.println("pass----3-----------------------");
 		HttpEntity<String> entity = new HttpEntity<String>(request.toString(), headers);
 		restTemplate
 		  .exchange(url, HttpMethod.POST, entity, String.class);
+		System.out.println("pass---4------------------------");
 		response.sendRedirect("/wiki/getArticle/"+articleId);
 	}
 
@@ -128,7 +133,7 @@ public class AppController {
 
 	@RequestMapping(method = RequestMethod.POST , value = "/addArticle")
 	public void postArticle(@ModelAttribute ArticleModel articelModel , HttpServletResponse response )throws IOException  {
-		String url = "http://"+gateWay+":8085/api/Articles/Articles/addArticle";
+		String url = "http://"+gateWay+":"+port+"/api/Articles/Articles/addArticle";
 		JSONObject request = new JSONObject();
 		request.put("subject", articelModel.getSubject());
 		request.put("text", articelModel.getText());
@@ -144,7 +149,7 @@ public class AppController {
 	
 	@RequestMapping(method = RequestMethod.GET , value = "/deleteArticle/{articleId}")
 	public void deleteArticle(@PathVariable int articleId , HttpServletResponse response )throws IOException {
-		restTemplate.getForObject("http://"+gateWay+":8085/api/Articles/Articles/delete/"+articleId, String.class);
+		restTemplate.getForObject("http://"+gateWay+":"+port+"/api/Articles/Articles/delete/"+articleId, String.class);
 		response.sendRedirect("/wiki/all");
 	}
 	
@@ -152,7 +157,7 @@ public class AppController {
 	@RequestMapping(method = RequestMethod.GET , value = "/related/{category}")
 	public ModelAndView getRelatedArticles(@PathVariable String category) {
 		ModelAndView mav = new ModelAndView("AllArticles");
-		ArticleList AllArticles = restTemplate.getForObject("http://"+gateWay+":8085/api/Related/RelatedArticle/"+category,ArticleList.class);
+		ArticleList AllArticles = restTemplate.getForObject("http://"+gateWay+":"+port+"/api/Related/RelatedArticle/"+category,ArticleList.class);
 		List <ArticleModel> articles = AllArticles.getArticle();
 		mav.addObject("articles",articles);
 		return mav  ;

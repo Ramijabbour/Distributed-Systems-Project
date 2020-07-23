@@ -2,26 +2,26 @@ spring:
    application:
       name: Comments-Service
    rabbitmq:
-     host: 172.20.10.2
+     host: 192.168.1.8
      port: 5672
      username: test
      password: test
      
 server:
-  port: ${PORT:8082}
+  port: ${PORT:8060}
   
   
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://172.20.10.2:8761/eureka
+        serviceUrl:
+            defaultZone: http://192.168.1.8:8761/eureka
+            
+            
   instance:
-    prefer-ip-address: true
-    ip-address: 172.20.10.2
-    instance-id: Comment-3
+    instance-id: Comments-1
     metadataMap:
-      zone: zone3
-
+      zone: zone1
+            
 endpoints:
   shutdown:
     enabled: true

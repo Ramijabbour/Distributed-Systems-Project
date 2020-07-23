@@ -4,3 +4,8 @@ spring:
 
 server:
   port: ${PORT:9090}
+
+endpoints:
+   shutdown:
+      enabled: true
+      sensitive: false

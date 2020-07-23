@@ -1,5 +1,4 @@
-package com.example.demo.MQ;
-
+package com.example.Rate.demo.MQ;
 
 
 import org.springframework.amqp.core.*;

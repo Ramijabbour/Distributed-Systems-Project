@@ -8,7 +8,7 @@ server:
 eureka:
     client:
         serviceUrl:
-            defaultZone: http://localhost:8761/eureka
+            defaultZone: http://192.168.1.8:8761/eureka
         registerWithEureka: false
         preferSameZoneEureka: true
     instance:
@@ -27,7 +27,7 @@ zuul:
         serviceId: Comments-Service
       Rating-Service:
         path: /Rate/**
-        serviceId: Rating-Service
+        serviceId: Rate-Service
       Search-Service:
         path: /Search/**
         serviceId: Search-Service

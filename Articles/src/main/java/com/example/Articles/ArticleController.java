@@ -62,7 +62,7 @@ public class ArticleController {
 		//get all comment for this article 
 		ArticleComment AllComments =restTemplate.getForObject("http://Comments-Service/Comments/getComments/"+article.id, ArticleComment.class);
 		List<CommentModel> ArticleComment = AllComments.getAllCommentForThisArticle();
-		float Rating =restTemplate.getForObject("http://Rating-Service/Rate/getRate/"+article.id, Float.class);
+		float Rating =restTemplate.getForObject("http://Rate-Service/Rate/getRate/"+article.id, Float.class);
 	
 		ArticleCommentRating AllInformation = new ArticleCommentRating();
 		AllInformation.setArticle(article);

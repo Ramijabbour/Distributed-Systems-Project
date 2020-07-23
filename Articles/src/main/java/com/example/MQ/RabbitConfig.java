@@ -24,7 +24,7 @@ public class RabbitConfig implements RabbitListenerConfigurer {
     @Bean
     public Queue QArticleIdToRating() {
         return new Queue("ArticleIdToRating");
-    }
+    }		
 
 
     @Bean

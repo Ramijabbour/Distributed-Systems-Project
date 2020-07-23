@@ -1,4 +1,4 @@
-package com.example.demo.MQ.ModelToRecv;
+package com.example.demo.Rate.MQ.ModelToRecv;
 
 import java.io.Serializable;
 

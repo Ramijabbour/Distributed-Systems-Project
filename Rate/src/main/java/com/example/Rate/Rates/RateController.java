@@ -18,6 +18,7 @@ public class RateController {
 	@RequestMapping(method = RequestMethod.POST ,value = "/addRate")
 	public void addRating (@RequestBody RateModel ratingModel )
 	{
+		System.out.println("call for add rate ----------");
 		this.ratingService.addRate(ratingModel.getRateValue(), ratingModel.getArticleId());
 	}
 	
