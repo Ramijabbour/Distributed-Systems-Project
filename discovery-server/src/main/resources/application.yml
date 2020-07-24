@@ -1,7 +1,8 @@
 spring:
    application:
       name: discovery-service
-      
+   
+     
 server:
   port: ${PORT:8761}
    
@@ -9,13 +10,8 @@ eureka:
   instance:
     metadataMap:
         zone: zone1
-    prefer-ip-address: true
-    ip-address: 192.168.1.9
-    instance-id: Eureka-1
   
   client:
     registerWithEureka: true
     fetchRegistry: false
     
-    serviceUrl:
-            defaultZone: http://192.168.1.8:8761/eureka

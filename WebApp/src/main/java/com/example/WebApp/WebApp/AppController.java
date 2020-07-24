@@ -36,7 +36,7 @@ public class AppController {
 	public RestTemplate restTemplate ;
 
 	
-	private String gateWay = "192.168.1.9"; 
+	private String gateWay = "localhost"; 
 	
 	private String port = "8085" ; 
 

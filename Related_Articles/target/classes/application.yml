@@ -9,14 +9,12 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://192.168.1.8:8761/eureka
+      defaultZone: http://localhost:8761/eureka
 
 
 
 
   instance:
-    prefer-ip-address: true
-    ip-address: 192.168.1.9
     instance-id: RelatedArticles-1
     metadataMap:
       zone: zone1
@@ -26,3 +24,10 @@ endpoints:
   shutdown:
     enabled: true
     sensitive: false
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "hystrix.stream"
+        
