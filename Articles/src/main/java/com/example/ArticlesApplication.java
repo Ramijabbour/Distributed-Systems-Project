@@ -33,8 +33,11 @@ public class ArticlesApplication {
 	public CacheManager chacheManager() {
 		return new ConcurrentMapCacheManager("comments","rating");
 	}
-
 	
+	@Bean
+	public Sampler getSamlper() {
+		return Sampler.ALWAYS_SAMPLE;
+	}
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ArticlesApplication.class, args);
