@@ -156,7 +156,7 @@ public class AppController {
 	
 	@RequestMapping(method = RequestMethod.GET , value = "/related/{category}")
 	public ModelAndView getRelatedArticles(@PathVariable String category) {
-		ModelAndView mav = new ModelAndView("AllArticles");
+		ModelAndView mav = new ModelAndView("related");
 		ArticleList AllArticles = restTemplate.getForObject("http://"+gateWay+":"+port+"/api/Related/RelatedArticle/"+category,ArticleList.class);
 		List <ArticleModel> articles = AllArticles.getArticle();
 		mav.addObject("articles",articles);

@@ -20,6 +20,7 @@ eureka:
             
             
   instance:
+    instance-id: Articles-1
     metadataMap:
       zone: zone1
   

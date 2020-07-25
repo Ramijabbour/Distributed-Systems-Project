@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Home </title>
+		<title>Related Articles </title>
 
  		<!-- Google font -->
  		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -100,8 +100,8 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="/wiki/home">Home</a></li>
-						<li><a href="/wiki/all">All Articles</a></li>
+						<li><a href="/wiki/home">Home</a></li>
+						<li class="active"><a href="/wiki/all">All Articles</a></li>
 						
 						<li><a href="/wiki/addArticle">Add Article</a></li>
 					</ul>
@@ -120,7 +120,7 @@
 			<!-- container -->
 			<div class="container">
                 <div class ="row">
-                    <h2 style="color: gray;">All Articles</h2>
+                    <h2 style="color: gray;">Related Articles</h2>
                 </div>
                 <hr>
 				<!-- row -->
@@ -132,22 +132,19 @@
 
                                 <th> Category </th>
                                 
-                                <th> brief </th>
-
                                 <th> Link </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="article : ${articles}">
                                 <td th:text="${article.subject}"></td>
-                                <td><span> Category </span></td>
-                                <td th:text="${article.brief}"></td>
+                                <td th:text="${article.Category}"></td>
                                 <td>
-                                    <form action="#">
-                                        <button class="primary-btn" type="submit">
-                                            <i>Go To Article</i>
-                                        </button>
-                                    </form>
+                          			<form action="#" th:action="@{/wiki/getArticle/}+ ${{article.id}} " method="get">
+                              			<button th:id="'table_entry_childs_button_' + ${article.id}" class="primary-btn" type="submit">
+                                  			<i>Go To Article</i>
+                             			</button>
+                          			</form>
                                 </td>
                             </tr>
                         </tbody>
