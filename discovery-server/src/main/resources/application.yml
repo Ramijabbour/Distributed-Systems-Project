@@ -12,7 +12,7 @@ eureka:
         zone: zone1
   
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: false
     
 zipkin:
