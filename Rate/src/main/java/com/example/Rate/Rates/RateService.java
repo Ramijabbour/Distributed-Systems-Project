@@ -3,6 +3,7 @@ package com.example.Rate.Rates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 
 
@@ -52,5 +53,8 @@ public class RateService {
         return sum / RatingList.size();
     }
 
+    
+
+	
 
 }
