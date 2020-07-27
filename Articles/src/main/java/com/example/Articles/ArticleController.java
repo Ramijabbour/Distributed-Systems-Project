@@ -68,8 +68,8 @@ public class ArticleController {
 	public String deleteArticle(@PathVariable int id)
 	{
 		this.articleService.deleteArticle(id);
-		orderMessageSender.sendOrderToComment(new ArticleID(id));
-		orderMessageSender.sendOrderToRating(new ArticleID(id));
+		//orderMessageSender.sendOrderToComment(new ArticleID(id));
+		//orderMessageSender.sendOrderToRating(new ArticleID(id));
 		
 		return "ok";
 	}
